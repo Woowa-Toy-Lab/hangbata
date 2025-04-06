@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "BMkkubulimTTF-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BMHANNAAir";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tx-xxl {
+  font-family: "BMkkubulimTTF-Regular";
+  font-size: 64px;
+}
+
+.tx-xl {
+  font-size: 48px;
+}
+
+.tx-lg {
+  font-size: 32px;
+}
+
+.tx-md {
+  font-size: 24px;
+}
+
+.tx-sm {
+  font-size: 18px;
+  font-family: "BMHANNAAir";
+}
+
+.tx-xs {
+  font-size: 14px;
+  font-family: "BMHANNAAir";
+}
