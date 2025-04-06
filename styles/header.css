@@ -1,0 +1,27 @@
+.header {
+  position: fixed;
+  color: white;
+}
+
+.logo-container {
+  position: relative;
+  display: flex;
+}
+
+.title-box {
+  position: absolute;
+  inset: 32px 0 0 176px;
+  width: 300px;
+}
+
+.logo-box {
+  position: absolute;
+  inset: -8px 8px 0 16px;
+  width: 150px;
+  height: 150px;
+  color: white;
+}
+
+.logo-box img {
+  position: absolute;
+}

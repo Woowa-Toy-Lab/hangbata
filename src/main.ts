@@ -8,30 +8,32 @@ const background = createElement("div", {
   class: "background",
 });
 
-const headerContainer = createElement("div", {
-  id: "header-container",
-  class: "header",
-});
+const headerContainer = createElement("div", { class: "header" });
 
-const headerTitle = createElement(
+const titleBox = createElement(
   "div",
-  {
-    id: "header-title",
-    class: "tx-xxl",
-  },
-  "행바타"
+  { class: "title-box" },
+  createElement("div", { class: "tx-xxl" }, "행바타"),
+  createElement("div", { class: "tx-md" }, "나만의 행성이 만들기")
 );
 
-const headerSubtitle = createElement(
+const logoBox = createElement(
   "div",
-  {
-    id: "header-subtitle",
-    class: "tx-md",
-  },
-  "나만의 행성이 만들기"
+  { class: "logo-box" },
+  createElement("img", {
+    src: "/img/logo-alpha.svg",
+    alt: "hangbata logo image",
+  })
 );
 
-headerContainer.append(headerTitle, headerSubtitle);
+const logoContainer = createElement(
+  "div",
+  { class: "logo-container" },
+  logoBox,
+  titleBox
+);
+
+headerContainer.append(logoContainer);
 
 if (app) {
   app.appendChild(background);
