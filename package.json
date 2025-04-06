@@ -1,0 +1,51 @@
+{
+  "name": "hangbata",
+  "version": "2.0.0",
+  "description": "[행바타] : 나만의 행성이 만들기",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test-unit": "jest --no-cache",
+    "test-e2e": "cypress open",
+    "deploy": "vite build --base=/javascript-movie-review/ --minify=false && npx gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Woowa-Toy-Lab/hangbata.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Woowa-Toy-Lab/hangbata/issues"
+  },
+  "homepage": "https://{username}.github.io/hangbata",
+  "devDependencies": {
+    "vite": "^6.1.0",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^29.4.0",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1",
+    "cypress": "^12.3.0",
+    "eslint": "^8.35.0",
+    "prettier": "^2.8.4",
+    "typescript": "~5.7.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.ts$": "babel-jest"
+    }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "engines": {
+    "npm": ">=10.8.2",
+    "node": ">=20.17.0"
+  }
+}
