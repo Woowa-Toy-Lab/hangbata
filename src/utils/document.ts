@@ -12,16 +12,25 @@ interface IArguments {
   value?: string;
   src?: string;
   alt?: string;
+  style?: string;
 }
 
 export function createElement(
   tag: keyof HTMLElementTagNameMap,
   args: IArguments,
-  textContent?: string
+  ...children: string[] | Element[]
 ): Element {
   const attribute = Object.entries(args)
     .map(([key, value]) => `${key}="${value}"`)
     .join(" ");
-  const template = `<${tag} ${attribute}>${textContent ?? ""}</${tag}>`;
-  return toElement(template);
+
+  const template = `<${tag} ${attribute}></${tag}>`;
+  const element = toElement(template);
+
+  children.forEach((child) => {
+    if (typeof child === "string") element.textContent = child;
+    else element.appendChild(child);
+  });
+
+  return element;
 }
