@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test-unit": "jest --no-cache",
     "test-e2e": "cypress open",
-    "deploy": "vite build --base=/javascript-movie-review/ --minify=false && npx gh-pages -d dist"
+    "deploy": "vite build --base=/hangbata/ --minify=false && npx gh-pages -d dist"
   },
   "repository": {
     "type": "git",
