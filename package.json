@@ -4,7 +4,7 @@
   "description": "[행바타] : 나만의 행성이 만들기",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite dev --host 0.0.0.0",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test-unit": "jest --no-cache",
