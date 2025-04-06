@@ -1,4 +1,5 @@
-import { createElement } from "./utils/document";
+import AvataContainer from "./components/AvataContainer/AvataContainer";
+import { createElement, getElement } from "./utils/document";
 
 console.log("npm run dev 명령어를 통해 행바타 서버를 실행하세요.");
 
@@ -34,8 +35,11 @@ const logoContainer = createElement(
 );
 
 headerContainer.append(logoContainer);
-
-if (app) {
-  app.appendChild(background);
-  app.appendChild(headerContainer);
+const header = getElement("header");
+if (header) {
+  header.appendChild(background);
+  header.appendChild(headerContainer);
 }
+
+const avataContainer = AvataContainer();
+avataContainer.render("#avataLayout");

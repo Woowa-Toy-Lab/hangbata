@@ -34,3 +34,7 @@ export function createElement(
 
   return element;
 }
+
+export function getElement(target: string) {
+  return document.querySelector(target);
+}
