@@ -1,7 +1,7 @@
-function toElement(template: string) {
+function toElement(template: string): Element {
   const container = document.createElement("div");
   container.innerHTML = template;
-  return container.firstElementChild;
+  return container.firstElementChild!;
 }
 
 interface IArguments {
@@ -16,11 +16,12 @@ interface IArguments {
 
 export function createElement(
   tag: keyof HTMLElementTagNameMap,
-  args: IArguments
-) {
+  args: IArguments,
+  textContent?: string
+): Element {
   const attribute = Object.entries(args)
     .map(([key, value]) => `${key}="${value}"`)
     .join(" ");
-  const template = `<${tag} ${attribute}></${tag}>`;
+  const template = `<${tag} ${attribute}>${textContent ?? ""}</${tag}>`;
   return toElement(template);
 }

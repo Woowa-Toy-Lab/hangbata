@@ -8,6 +8,32 @@ const background = createElement("div", {
   class: "background",
 });
 
+const headerContainer = createElement("div", {
+  id: "header-container",
+  class: "header",
+});
+
+const headerTitle = createElement(
+  "div",
+  {
+    id: "header-title",
+    class: "tx-xxl",
+  },
+  "행바타"
+);
+
+const headerSubtitle = createElement(
+  "div",
+  {
+    id: "header-subtitle",
+    class: "tx-md",
+  },
+  "나만의 행성이 만들기"
+);
+
+headerContainer.append(headerTitle, headerSubtitle);
+
 if (app) {
-  if (background) app.appendChild(background);
+  app.appendChild(background);
+  app.appendChild(headerContainer);
 }
