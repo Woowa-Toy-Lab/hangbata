@@ -1,8 +1,6 @@
 import AvataContainer from "./components/AvataContainer/AvataContainer";
-import Canvas from "./components/Canvas/Canvas";
+import { canvasInstance } from "./components/Canvas/Canvas";
 import { createElement, getElement } from "./utils/document";
-
-console.log("npm run dev 명령어를 통해 행바타 서버를 실행하세요.");
 
 const app = document.querySelector("#app");
 const background = createElement("div", {
@@ -42,5 +40,5 @@ if (header) {
   header.appendChild(headerContainer);
 }
 
-const canvas = Canvas("#canvasLayout");
+const canvas = canvasInstance();
 const avataContainer = AvataContainer("#avataLayout");

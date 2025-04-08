@@ -28,7 +28,7 @@ function AvataContainer(targetId: string) {
       },
       prevArrow,
       nextArrow,
-      ...AvataList({ key: "몸통" })
+      AvataList("몸통")
     );
 
     target?.append(avataContainer);
