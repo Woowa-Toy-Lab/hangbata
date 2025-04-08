@@ -26,3 +26,14 @@
   width: 100%;
   height: 100%;
 }
+
+.avata-svg-box {
+  width: 100%;
+  height: 100%;
+}
+
+.avata-svg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

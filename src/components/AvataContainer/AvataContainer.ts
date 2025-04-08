@@ -1,4 +1,5 @@
 import { createElement, getElement } from "../../utils/document";
+import AvataList from "./AvataList/AvataList";
 
 function AvataContainer() {
   // 다음 리스트 페이지를 불러오는 기능
@@ -19,14 +20,6 @@ function AvataContainer() {
       alt: "next arrow",
     });
 
-    const container = createElement(
-      "div",
-      {
-        class: "container",
-      },
-      "공간 유지를 위한 공간입니다 "
-    );
-
     const avataContainer = createElement(
       "div",
       {
@@ -34,7 +27,7 @@ function AvataContainer() {
       },
       prevArrow,
       nextArrow,
-      container
+      ...AvataList({ key: "몸통" })
     );
 
     getElement(targetId)?.append(avataContainer);
