@@ -1,7 +1,5 @@
 import { createElement } from "../../../../utils/document";
 
-const url = "img/";
-
 function AvataItem(svgName: string) {
   const img = createElement("img", {
     src: `/img/${svgName}.svg`,

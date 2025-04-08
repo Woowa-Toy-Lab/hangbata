@@ -1,11 +1,12 @@
 import { createElement, getElement } from "../../utils/document";
 import AvataList from "./AvataList/AvataList";
 
-function AvataContainer() {
+function AvataContainer(targetId: string) {
   // 다음 리스트 페이지를 불러오는 기능
   // 리스트가 렌더링이 돼야함
+  const target = getElement(targetId);
 
-  function render(targetId: string) {
+  function render() {
     const prevArrow = createElement("img", {
       id: "prevArrow",
       class: "arrow-icon",
@@ -30,10 +31,10 @@ function AvataContainer() {
       ...AvataList({ key: "몸통" })
     );
 
-    getElement(targetId)?.append(avataContainer);
+    target?.append(avataContainer);
   }
 
-  return { render };
+  render();
 }
 
 export default AvataContainer;

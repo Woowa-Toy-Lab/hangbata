@@ -1,0 +1,15 @@
+.canvas {
+  position: relative;
+  background-image: url("/img/canvas.png");
+  background-size: cover;
+  width: 440px;
+  height: 240px;
+  border-radius: 15px;
+}
+
+.canvas-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 28px;
+}
