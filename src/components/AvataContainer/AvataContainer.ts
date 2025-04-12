@@ -7,7 +7,9 @@ function AvataContainer(targetId: string) {
   const avataList = AvataList();
   const avataListElements = {
     몸통: avataList.template("몸통"),
-    표정: avataList.template("표정"),
+    눈1: avataList.template("눈1"),
+    눈2: avataList.template("눈2"),
+    입: avataList.template("입"),
     소품: avataList.template("소품"),
     배경: avataList.template("배경"),
     특수효과: avataList.template("특수효과"),
