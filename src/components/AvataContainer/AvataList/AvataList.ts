@@ -4,7 +4,7 @@ import AvataItem from "./AvataItem/AvataItem";
 
 const avataListData = {
   몸통: ["body1", "body2", "body3", "body4"],
-  표정: ["eye", "eye", "eye", ""],
+  표정: ["eye", "star-eye", "eye", "star-eye"],
   소품: ["barbell", "coffee", "labtop", "magicwand"],
   특수효과: [],
   배경: ["background1", "background2", "background3", "background4"],
