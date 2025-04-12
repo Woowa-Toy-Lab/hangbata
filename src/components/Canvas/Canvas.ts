@@ -5,7 +5,7 @@ let instance: ReturnType<typeof Canvas> | null = null;
 
 function Canvas(targetId: string) {
   const target = getElement(targetId);
-  const canvas = createElement("div", { class: "canvas" });
+  const canvas = createElement("canvas", { class: "canvas" });
   const bodyLayer = createElement("img", {
     id: "canvasBody",
     class: " canvas-item hidden",
