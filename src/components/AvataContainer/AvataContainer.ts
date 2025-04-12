@@ -3,8 +3,6 @@ import AvataList, { Tkey } from "./AvataList/AvataList";
 import AvataTabBar from "./AvataTabBar/AvataTabBar";
 
 function AvataContainer(targetId: string) {
-  // 다음 리스트 페이지를 불러오는 기능
-  // 리스트가 렌더링이 돼야함
   const target = getElement(targetId);
   const avataList = AvataList();
   const avataListElements = {

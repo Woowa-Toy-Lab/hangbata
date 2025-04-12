@@ -9,7 +9,6 @@ const avataTabList = [
 ];
 
 function AvataTabBar(onTabChange: (key: Tkey) => void) {
-  // querySelectorAll로 다 classLIist.remove하는게 비효율적인거같아서 만들었어!
   let prevSelectedElement: Element | null = null;
 
   function setAvataList(e: Event) {
@@ -42,7 +41,6 @@ function AvataTabBar(onTabChange: (key: Tkey) => void) {
       )
     );
     prevSelectedElement = avataTabBar.querySelector(".avata-tab-item");
-    console.log("prevSelectedElement", prevSelectedElement);
     avataTabBar.removeEventListener("click", setAvataList);
     avataTabBar.addEventListener("click", setAvataList);
 

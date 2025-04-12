@@ -34,9 +34,6 @@ function Canvas(targetId: string) {
   };
 
   function setCanvasImage(key: Tkey, svgName: string) {
-    // as 타입단언을 제거하기 위해 createElement, toElement 수정했고
-    // item 선언도 if 분기를 나눠서 진행함
-    // 이렇게된 이유는 canvas(배경)은 div고 나머지는 Image태그라서 ㅠㅜ
     if (key === "배경") {
       const item = state["배경"];
       item.svgName = svgName;
