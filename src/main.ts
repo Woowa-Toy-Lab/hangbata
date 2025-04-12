@@ -3,7 +3,6 @@ import { canvasInstance } from "./components/Canvas/Canvas";
 import ColorPalette from "./components/ColorPalette/ColorPalette";
 import changeColor from "./utils/changeColor";
 import { createElement, getElement } from "./utils/document";
-import drawMultipleSvgToCanvas from "./utils/drawMultipleSvgToCanvas";
 
 const app = document.querySelector("#app");
 const background = createElement("div", {
@@ -43,15 +42,9 @@ if (header) {
   header.appendChild(headerContainer);
 }
 
+changeColor("#aeffcf", "#aecccf");
+
 const canvas = canvasInstance();
 
 const colorPalette = ColorPalette("#avataLayout");
 const avataContainer = AvataContainer("#avataLayout");
-
-changeColor("#aeffcf", "#aecccf");
-
-// const svgString1 = await fetch("img/body1.svg").then((res) => res.text());
-// const svgString2 = await fetch("img/body2.svg").then((res) => res.text());
-// const svgString3 = await fetch("img/body3.svg").then((res) => res.text());
-
-// drawMultipleSvgToCanvas([svgString1, svgString2, svgString3]);

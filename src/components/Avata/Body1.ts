@@ -1,7 +1,7 @@
 function Body1() {
   const container = document.createElement("div");
 
-  return fetch("img/body2.svg").then((res) => res.text());
+  fetch("img/body2.svg").then((res) => res.text());
 
   //   container.innerHTML = `
   //     <svg viewBox="0 0 500 500" width="300" height="300">
@@ -27,7 +27,7 @@ function Body1() {
   //   </g>
   // </svg>`;
 
-  //   return container;
+  return container;
 }
 
 export default Body1;

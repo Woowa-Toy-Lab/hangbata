@@ -1,24 +1,25 @@
 import { createElement, getElement } from "../../utils/document";
+import loadColoredSvg from "../../utils/loadColoredSvg";
 import { Tkey } from "../AvataContainer/AvataList/AvataList";
 
 let instance: ReturnType<typeof Canvas> | null = null;
 
 function Canvas(targetId: string) {
   const target = getElement(targetId);
-  const canvas = createElement("canvas", { class: "canvas" });
-  const bodyLayer = createElement("img", {
+  const canvas = createElement("div", { class: "canvas" });
+  const bodyLayer = createElement("div", {
     id: "canvasBody",
     class: " canvas-item hidden",
   });
-  const faceLayer = createElement("img", {
+  const faceLayer = createElement("div", {
     id: "canvasFace",
     class: "canvas-item hidden",
   });
-  const itemLayer = createElement("img", {
+  const itemLayer = createElement("div", {
     id: "canvasItem",
     class: "canvas-item hidden",
   });
-  const effectLayer = createElement("img", {
+  const effectLayer = createElement("div", {
     id: "canvasEffect",
     class: "canvas-item hidden",
   });
@@ -33,7 +34,7 @@ function Canvas(targetId: string) {
     배경: { svgName: "", element: canvas },
   };
 
-  function setCanvasImage(key: Tkey, svgName: string) {
+  async function setCanvasImage(key: Tkey, svgName: string) {
     if (key === "배경") {
       const item = state["배경"];
       item.svgName = svgName;
@@ -43,7 +44,7 @@ function Canvas(targetId: string) {
 
     const item = state[key];
     item.svgName = svgName;
-    item.element.src = `/img/${svgName}.svg`;
+    item.element.innerHTML = await loadColoredSvg(svgName, true);
     item.element.classList.remove("hidden");
   }
 
