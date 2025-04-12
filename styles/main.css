@@ -28,3 +28,7 @@
 canvas {
   position: relative;
 }
+
+.hidden {
+  display: none;
+}

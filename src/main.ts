@@ -1,6 +1,6 @@
 import AvataContainer from "./components/AvataContainer/AvataContainer";
 import { canvasInstance } from "./components/Canvas/Canvas";
-import ColorPalette from "./components/ColorPalette/ColorPalette";
+import ColorPaletteContainer from "./components/ColorPaletteContainer/ColorPaletteContainer";
 import changeColor from "./utils/changeColor";
 import { createElement, getElement } from "./utils/document";
 
@@ -42,9 +42,9 @@ if (header) {
   header.appendChild(headerContainer);
 }
 
-// changeColor("#aeffcf", "#aecccf");
+changeColor("#aeffcf", "#aecccf");
 
 const canvas = canvasInstance();
 
-const colorPalette = ColorPalette("#avataLayout");
 const avataContainer = AvataContainer("#avataLayout");
+const colorPalette = ColorPaletteContainer("#avataTabBar");

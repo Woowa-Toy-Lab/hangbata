@@ -22,6 +22,7 @@ interface IArguments {
   src?: string;
   alt?: string;
   style?: string;
+  for?: string;
 }
 
 export function createElement<K extends keyof HTMLElementTagNameMap>(

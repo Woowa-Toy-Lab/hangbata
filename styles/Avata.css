@@ -23,6 +23,7 @@
 }
 
 .avata-tab-bar {
+  position: relative;
   width: 80%;
   max-width: 752px;
   display: flex;
@@ -67,13 +68,6 @@
 
 #nextArrow {
   right: -80px;
-}
-
-.color-palette {
-  position: relative;
-  width: 54px;
-  height: 54px;
-  cursor: pointer;
 }
 
 /* avata container */
