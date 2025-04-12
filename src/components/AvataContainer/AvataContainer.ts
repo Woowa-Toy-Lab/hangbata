@@ -11,6 +11,7 @@ function AvataContainer(targetId: string) {
     눈2: avataList.template("눈2"),
     입: avataList.template("입"),
     소품: avataList.template("소품"),
+    특수효과: avataList.template("특수효과"),
     배경: avataList.template("배경"),
   };
 

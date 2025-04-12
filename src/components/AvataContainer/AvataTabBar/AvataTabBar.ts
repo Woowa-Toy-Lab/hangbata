@@ -7,6 +7,7 @@ const avataTabList = [
   { name: "눈2", id: "eye2Tab" },
   { name: "입", id: "mouthTab" },
   { name: "소품", id: "itemTab" },
+  { name: "특수효과", id: "effectTab" },
   { name: "배경", id: "backgroundTab" },
 ];
 

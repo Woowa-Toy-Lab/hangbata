@@ -26,7 +26,7 @@
   -webkit-user-drag: none;
 
   &:hover {
-    border: 2px solid #0c8ce9;
+    outline: 2px solid #0c8ce9;
   }
 
   &.face {
@@ -36,4 +36,15 @@
 
 .hidden {
   display: none;
+}
+
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background: #0c8ce9;
+  cursor: se-resize;
+  z-index: 10;
 }
