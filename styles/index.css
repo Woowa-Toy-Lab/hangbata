@@ -4,3 +4,9 @@
 @import "./main.css";
 @import "./avata.css";
 @import "./canvas.css";
+
+:root {
+  --theme-body-color: #fff;
+  --theme-band-color: #fff;
+  --theme-border-color: #000;
+}
