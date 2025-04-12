@@ -5,7 +5,7 @@ let instance: ReturnType<typeof Canvas> | null = null;
 
 function Canvas(targetId: string) {
   const target = getElement(targetId);
-  const canvas = createElement("div", { class: "canvas" });
+  const canvas = createElement("canvas", { class: "canvas" });
   const bodyLayer = createElement("img", {
     id: "canvasBody",
     class: " canvas-item hidden",
@@ -22,11 +22,7 @@ function Canvas(targetId: string) {
     id: "canvasEffect",
     class: "canvas-item hidden",
   });
-  const backgroundLayer = createElement("img", {
-    id: "canvasBackground",
-    class: "canvas-item hidden",
-  });
-  canvas.append(bodyLayer, faceLayer, itemLayer, effectLayer, backgroundLayer);
+  canvas.append(bodyLayer, faceLayer, itemLayer, effectLayer);
   target?.appendChild(canvas);
 
   let state = {
@@ -34,13 +30,20 @@ function Canvas(targetId: string) {
     표정: { svgName: "", element: faceLayer },
     소품: { svgName: "", element: itemLayer },
     특수효과: { svgName: "", element: effectLayer },
-    배경: { svgName: "", element: backgroundLayer },
+    배경: { svgName: "", element: canvas },
   };
 
   function setCanvasImage(key: Tkey, svgName: string) {
+    if (key === "배경") {
+      const item = state["배경"];
+      item.svgName = svgName;
+      item.element.style.backgroundImage = `url(/img/${svgName}.svg)`;
+      return;
+    }
+
     const item = state[key];
     item.svgName = svgName;
-    (item.element as HTMLImageElement).src = `/img/${svgName}.svg`;
+    item.element.src = `/img/${svgName}.svg`;
     item.element.classList.remove("hidden");
   }
 

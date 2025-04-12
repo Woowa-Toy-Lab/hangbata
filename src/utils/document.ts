@@ -1,7 +1,16 @@
-function toElement(template: string): Element {
+function toElement<K extends keyof HTMLElementTagNameMap>(
+  template: string,
+  tag: K
+): HTMLElementTagNameMap[K] {
   const container = document.createElement("div");
   container.innerHTML = template;
-  return container.firstElementChild!;
+
+  const el = container.firstElementChild;
+  if (!el) {
+    throw new Error("toElement 유틸 에러: element가 없습니다.");
+  }
+
+  return el as HTMLElementTagNameMap[K];
 }
 
 interface IArguments {
@@ -15,17 +24,17 @@ interface IArguments {
   style?: string;
 }
 
-export function createElement(
-  tag: keyof HTMLElementTagNameMap,
+export function createElement<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
   args: IArguments,
   ...children: string[] | Element[]
-): Element {
+): HTMLElementTagNameMap[K] {
   const attribute = Object.entries(args)
     .map(([key, value]) => `${key}="${value}"`)
     .join(" ");
 
   const template = `<${tag} ${attribute}></${tag}>`;
-  const element = toElement(template);
+  const element = toElement(template, tag);
 
   children.forEach((child) => {
     if (typeof child === "string") element.textContent = child;
