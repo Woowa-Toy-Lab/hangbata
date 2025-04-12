@@ -28,14 +28,13 @@
     return fetchOpts;
   }
   function processPreload(link) {
-    if (link.ep)
-      return;
+    if (link.ep) return;
     link.ep = true;
     const fetchOpts = getFetchOpts(link);
     fetch(link.href, fetchOpts);
   }
 })();
-console.log("npm run dev 명령어를 통해 행바타 서버를 실행하세요.");
+
 addEventListener("load", () => {
   const app = document.querySelector("#app");
   const container = document.createElement("div");

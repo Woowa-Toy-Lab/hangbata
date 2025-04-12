@@ -6,7 +6,7 @@
 @import "./canvas.css";
 
 :root {
-  --theme-body-color: #fff;
-  --theme-band-color: #fff;
+  --theme-body-color: rgba(0, 0, 0, 0);
+  --theme-band-color: rgba(0, 0, 0, 0);
   --theme-border-color: #000;
 }

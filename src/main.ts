@@ -42,7 +42,7 @@ if (header) {
   header.appendChild(headerContainer);
 }
 
-changeColor("#aeffcf", "#aecccf");
+// changeColor("#aeffcf", "#aecccf");
 
 const canvas = canvasInstance();
 
