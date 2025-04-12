@@ -1,8 +1,12 @@
 import { createElement, getElement } from "../../../utils/document";
-import loadPaletteSvg from "../../../utils/loadPaletteSvg";
+import ColorPicker from "./ColorPicker/ColorPicker";
 
 function ColorPickerDropdown(targetId: string) {
   const target = getElement(targetId);
+
+  function changeColor(name: string, color: string) {
+    document.documentElement.style.setProperty(`--theme-${name}-color`, color);
+  }
 
   function render() {
     const dropDownContainer = createElement("div", {
@@ -10,54 +14,28 @@ function ColorPickerDropdown(targetId: string) {
       class: "drop-down-container",
     });
 
-    const colorPicker = (id: string, name: string) => {
-      const colorIcon = createElement("div", {
-        id: "pickerPaletteIcon",
-        class: "picker-palette-icon",
-      });
-
-      let paletterColor = getComputedStyle(document.documentElement)
-        .getPropertyValue(`--theme-${id}-color`)
-        .trim();
-
-      if (paletterColor === "rgba(0, 0, 0, 0)") {
-        paletterColor = "#000";
-      }
-
-      loadPaletteSvg(paletterColor).then((text) => {
-        colorIcon.innerHTML = text;
-      });
-
-      const inputIcon = createElement("input", {
-        type: "color",
-        id: `${id}PickerIcon`,
-        class: "picker-icon",
-        name: id,
-      });
-
-      const inputLabel = createElement("label", {
-        for: `${id}PickerIcon`,
-      });
-      inputLabel.innerHTML = name;
-
-      const pickerContainer = createElement(
-        "div",
-        {
-          id: "pickerContainer",
-          class: "picker-container",
-        },
-        colorIcon,
-        inputIcon,
-        inputLabel
-      );
-
-      return pickerContainer;
-    };
-
     dropDownContainer.append(
-      colorPicker("body", "행성"),
-      colorPicker("band", "행성 띠")
+      ColorPicker("body", "행성"),
+      ColorPicker("band", "행성 띠")
     );
+
+    dropDownContainer.addEventListener("input", (event) => {
+      const target = event.target as HTMLInputElement;
+      const targetColor = target.value;
+
+      const targetId = target.closest(".picker-container")!.id;
+      const changeTarget = targetId.match(/^(.+?)-picker$/)?.[1] ?? "";
+      changeColor(changeTarget, targetColor);
+
+      const el = getElement("#canvasBody svg")!.id;
+      const svg = document.querySelector(`.canvas #${el}`);
+      const bodySVG = svg?.querySelector(`#${changeTarget}`);
+      const paths = bodySVG?.querySelectorAll("path");
+
+      paths?.forEach((path) => {
+        path.setAttribute("fill", targetColor);
+      });
+    });
 
     target?.append(dropDownContainer);
   }

@@ -1,7 +1,6 @@
 import AvataContainer from "./components/AvataContainer/AvataContainer";
 import { canvasInstance } from "./components/Canvas/Canvas";
 import ColorPaletteContainer from "./components/ColorPaletteContainer/ColorPaletteContainer";
-import changeColor from "./utils/changeColor";
 import { createElement, getElement } from "./utils/document";
 
 const app = document.querySelector("#app");
@@ -42,7 +41,7 @@ if (header) {
   header.appendChild(headerContainer);
 }
 
-changeColor("#aeffcf", "#aecccf");
+// changeColor("#aeffcf", "#aecccf");
 
 const canvas = canvasInstance();
 

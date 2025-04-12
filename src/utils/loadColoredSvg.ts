@@ -1,3 +1,5 @@
+import getCssVarColor from "./getCssVarColor";
+
 function loadColoredSvg(svgName: string, isCanvas: boolean) {
   let borderColor = "#fff";
   let themeBodyColor = "rgba(0,0,0,0)";
@@ -6,15 +8,9 @@ function loadColoredSvg(svgName: string, isCanvas: boolean) {
 
   if (isCanvas) {
     borderColor = "#000";
-    themeBodyColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--theme-body-color")
-      .trim();
-    themeBandColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--theme-band-color")
-      .trim();
-    themeItemColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--theme-item-color")
-      .trim();
+    themeBodyColor = getCssVarColor("--theme-body-color");
+    themeBandColor = getCssVarColor("--theme-band-color");
+    themeItemColor = getCssVarColor("--theme-item-color");
   }
 
   const svgString = fetch(`img/${svgName}.svg`)

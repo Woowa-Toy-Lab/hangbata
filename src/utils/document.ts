@@ -48,3 +48,7 @@ export function createElement<K extends keyof HTMLElementTagNameMap>(
 export function getElement(target: string) {
   return document.querySelector(target);
 }
+
+export function getAllElement(target: string) {
+  return document.querySelectorAll(target);
+}
