@@ -11,9 +11,18 @@ function Canvas(targetId: string) {
     id: "canvasBody",
     class: " canvas-item hidden",
   });
-  const faceLayer = createElement("div", {
-    id: "canvasFace",
-    class: "canvas-item hidden",
+
+  const eye1Layer = createElement("div", {
+    id: "canvasEye1",
+    class: "canvas-item face hidden",
+  });
+  const eye2Layer = createElement("div", {
+    id: "canvasEye2",
+    class: "canvas-item face hidden",
+  });
+  const mouthLayer = createElement("div", {
+    id: "canvasMouth",
+    class: "canvas-item face hidden",
   });
   const itemLayer = createElement("div", {
     id: "canvasItem",
@@ -23,16 +32,75 @@ function Canvas(targetId: string) {
     id: "canvasEffect",
     class: "canvas-item hidden",
   });
-  canvas.append(bodyLayer, faceLayer, itemLayer, effectLayer);
+  canvas.append(
+    bodyLayer,
+    itemLayer,
+    effectLayer,
+    eye1Layer,
+    eye2Layer,
+    mouthLayer
+  );
   target?.appendChild(canvas);
 
   let state = {
     몸통: { svgName: "", element: bodyLayer },
-    표정: { svgName: "", element: faceLayer },
+    눈1: { svgName: "", element: eye1Layer },
+    눈2: { svgName: "", element: eye2Layer },
+    입: { svgName: "", element: mouthLayer },
     소품: { svgName: "", element: itemLayer },
     특수효과: { svgName: "", element: effectLayer },
     배경: { svgName: "", element: canvas },
   };
+
+  const draggedElements = new WeakSet<Element>();
+  let selectedElement: HTMLElement | null = null;
+
+  function selectElement(el: HTMLElement) {
+    clearSelection();
+    selectedElement = el;
+  }
+
+  function clearSelection() {
+    if (selectedElement) {
+      selectedElement.style.border = "";
+      selectedElement = null;
+    }
+  }
+
+  function onDragHandler(el: HTMLElement) {
+    if (draggedElements.has(el)) return;
+    draggedElements.add(el);
+
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    el.addEventListener("mousedown", (e) => {
+      e.stopPropagation();
+      isDragging = true;
+      selectElement(el);
+      offsetX = e.clientX - el.offsetLeft;
+      offsetY = e.clientY - el.offsetTop;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging || selectedElement !== el) return;
+      const x = e.clientX - offsetX;
+      const y = e.clientY - offsetY;
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+  }
+
+  document.addEventListener("mousedown", (e) => {
+    if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
+      clearSelection();
+    }
+  });
 
   async function setCanvasImage(key: Tkey, svgName: string) {
     if (key === "배경") {
@@ -46,6 +114,8 @@ function Canvas(targetId: string) {
     item.svgName = svgName;
     item.element.innerHTML = await loadThemedSvg(svgName, true);
     item.element.classList.remove("hidden");
+    if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
+    onDragHandler(item.element);
   }
 
   return { setCanvasImage };

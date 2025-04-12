@@ -24,27 +24,11 @@ function AvataContainer(targetId: string) {
   }
 
   function render() {
-    const prevArrow = createElement("img", {
-      id: "prevArrow",
-      class: "arrow-icon",
-      src: "/img/prev-arrow.svg",
-      alt: "prev arrow",
-    });
-
-    const nextArrow = createElement("img", {
-      id: "nextArrow",
-      class: "arrow-icon",
-      src: "/img/next-arrow.svg",
-      alt: "next arrow",
-    });
-
     const avataListContainer = createElement(
       "div",
       {
         class: "avata-list-container",
       },
-      prevArrow,
-      nextArrow,
       avataListElements["몸통"]
     );
 

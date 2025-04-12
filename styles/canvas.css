@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .canvas-layout {
@@ -18,9 +19,23 @@
 }
 
 .canvas-item {
-  display: flex;
+  position: absolute;
   height: 100%;
   width: auto;
+  user-drag: none;
+  -webkit-user-drag: none;
+
+  &.selected {
+    outline: 2px solid #ff7b00;
+  }
+
+  &:hover {
+    outline: 2px solid #0c8ce9;
+  }
+
+  &.face {
+    height: 30px;
+  }
 }
 
 .hidden {
