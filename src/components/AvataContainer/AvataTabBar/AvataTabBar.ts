@@ -3,7 +3,9 @@ import { Tkey } from "../AvataList/AvataList";
 
 const avataTabList = [
   { name: "몸통", id: "bodyTab" },
-  { name: "표정", id: "faceTab" },
+  { name: "눈1", id: "eye1Tab" },
+  { name: "눈2", id: "eye2Tab" },
+  { name: "입", id: "mouthTab" },
   { name: "소품", id: "itemTab" },
   { name: "배경", id: "backgroundTab" },
 ];
