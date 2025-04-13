@@ -19,7 +19,6 @@ function DownloadContainer(targetId: string) {
     const downloadContainer = createElement(
       "div",
       {
-        id: "downloadContainer",
         class: "download-container",
       },
       download

@@ -1,6 +1,6 @@
 import AvataContainer from "./components/AvataContainer/AvataContainer";
 import { canvasInstance } from "./components/Canvas/Canvas";
-import DownloadContainer from "./components/DownloadContainer/DownloadContainer";
+import DownloadContainer from "./components/Download/Download";
 import PaletteContainer from "./components/PaletteContainer/PaletteContainer";
 import { createElement, getElement } from "./utils/document";
 import "./utils/event";
