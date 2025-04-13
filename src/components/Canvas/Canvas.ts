@@ -31,12 +31,12 @@ function Canvas(targetId: string) {
     class: "canvas-item hidden",
   });
   canvas.append(
-    itemLayer,
     bodyLayer,
+    itemLayer,
+    effectLayer,
     eye1Layer,
     eye2Layer,
-    mouthLayer,
-    effectLayer
+    mouthLayer
   );
   target?.appendChild(canvas);
 
@@ -56,11 +56,12 @@ function Canvas(targetId: string) {
   function selectElement(el: HTMLElement) {
     clearSelection();
     selectedElement = el;
+    selectedElement.classList.add("selected");
   }
 
   function clearSelection() {
     if (selectedElement) {
-      selectedElement.style.border = "";
+      selectedElement.classList.remove("selected");
       selectedElement = null;
     }
   }
@@ -94,10 +95,12 @@ function Canvas(targetId: string) {
     });
   }
 
-  document.addEventListener("mousedown", (e) => {
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
     if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
       clearSelection();
     }
+    selectElement(target);
   });
 
   function setCanvasImage(key: Tkey, svgName: string) {
@@ -111,6 +114,7 @@ function Canvas(targetId: string) {
     const item = state[key];
     item.svgName = svgName;
     item.element.src = `/img/${svgName}.svg`;
+    if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
     item.element.classList.remove("hidden");
     onDragHandler(item.element);
   }
