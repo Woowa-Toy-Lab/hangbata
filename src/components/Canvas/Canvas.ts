@@ -9,7 +9,7 @@ function Canvas(targetId: string) {
   const canvas = createElement("div", { class: "canvas" });
   const bodyLayer = createElement("div", {
     id: "canvasBody",
-    class: " canvas-item hidden",
+    class: "canvas-item body hidden",
   });
 
   const eye1Layer = createElement("div", {
@@ -26,11 +26,11 @@ function Canvas(targetId: string) {
   });
   const itemLayer = createElement("div", {
     id: "canvasItem",
-    class: "canvas-item hidden",
+    class: "canvas-item effect hidden",
   });
   const effectLayer = createElement("div", {
     id: "canvasEffect",
-    class: "canvas-item hidden",
+    class: "canvas-item effect hidden",
   });
   canvas.append(
     bodyLayer,
@@ -114,8 +114,11 @@ function Canvas(targetId: string) {
     const item = state[key];
     item.svgName = svgName;
     item.element.innerHTML = await loadThemedSvg(svgName, true);
-    item.element.classList.remove("hidden");
-    if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
+    //if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
+    // else if (key === "몸통") item.element.style.width = "50%";
+    // else if (key === "눈1" || key === "눈2" || key === "입")
+    //item.element.style.width = "8%";
+
     item.element.classList.remove("hidden");
   }
 

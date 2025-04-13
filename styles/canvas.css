@@ -20,10 +20,18 @@
 
 .canvas-item {
   position: absolute;
-  height: 100%;
+  height: auto;
   width: auto;
   user-drag: none;
   -webkit-user-drag: none;
+
+  &.body {
+    width: 50%;
+  }
+
+  &.effect {
+    width: 30%;
+  }
 
   &.selected {
     outline: 2px solid #ff7b00;
