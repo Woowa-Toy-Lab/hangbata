@@ -84,7 +84,7 @@ function Canvas(targetId: string) {
       offsetY = e.clientY - el.offsetTop;
     });
 
-    document.addEventListener("mousemove", (e) => {
+    el.addEventListener("mousemove", (e) => {
       if (!isDragging || selectedElement !== el) return;
       const x = e.clientX - offsetX;
       const y = e.clientY - offsetY;
@@ -92,12 +92,12 @@ function Canvas(targetId: string) {
       el.style.top = `${y}px`;
     });
 
-    document.addEventListener("mouseup", () => {
+    el.addEventListener("mouseup", () => {
       isDragging = false;
     });
   }
 
-  document.addEventListener("click", (e) => {
+  canvas.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
       clearSelection();
