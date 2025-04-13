@@ -1,17 +1,10 @@
 import { createElement, getElement } from "../../../../utils/document";
+import fillSVGPath from "../../../../utils/fillSVGPath";
 import PaletteOption from "./PaletteOption/PaletteOption";
 
 function PaletteDropdownContainer() {
   function changeColor(name: string, color: string) {
     document.documentElement.style.setProperty(`--theme-${name}-color`, color);
-  }
-
-  function fillSVGPath(targetElement: string, targetColor: string) {
-    const SVG = getElement(targetElement);
-    const paths = SVG?.querySelectorAll("path");
-    paths?.forEach((path) => {
-      path.setAttribute("fill", targetColor);
-    });
   }
 
   function getColorAndTarget(event: Event) {

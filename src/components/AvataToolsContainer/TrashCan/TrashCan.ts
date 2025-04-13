@@ -1,4 +1,5 @@
 import { createElement, getElement } from "../../../utils/document";
+import fillSVGPath from "../../../utils/fillSVGPath";
 import loadSingleColorSvg from "../../../utils/loadSingleColorSvg";
 import { Tkey } from "../../AvataContainer/AvataList/AvataList";
 import { canvasInstance } from "../../Canvas/Canvas";
@@ -30,6 +31,18 @@ function TrashCan() {
 
     const selectedAvataElement = getElement(".avata-svg-box.selected");
     selectedAvataElement?.classList.remove("selected");
+
+    document.documentElement.style.setProperty(
+      `--theme-body-color`,
+      "rgba(0, 0, 0, 0)"
+    );
+    document.documentElement.style.setProperty(
+      `--theme-band-color`,
+      "rgba(0, 0, 0, 0)"
+    );
+
+    fillSVGPath(`.palette-dropdown #body-palette #palette #stroke`, "#000 ");
+    fillSVGPath(`.palette-dropdown #band-palette #palette #stroke`, "#000 ");
   });
 
   return trashCan;
