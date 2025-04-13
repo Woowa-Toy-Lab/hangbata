@@ -1,4 +1,4 @@
-import { createElement, getElement } from "../../../utils/document";
+import { createElement } from "../../../utils/document";
 import { Tkey } from "../AvataList/AvataList";
 
 const avataTabList = [

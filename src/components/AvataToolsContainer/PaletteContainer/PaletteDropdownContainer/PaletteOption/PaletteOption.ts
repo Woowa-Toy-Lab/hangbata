@@ -1,6 +1,6 @@
-import { createElement } from "../../../../utils/document";
-import getCssVarColor from "../../../../utils/getCssVarColor";
-import loadSingleColorSvg from "../../../../utils/loadSingleColorSvg";
+import { createElement } from "../../../../../utils/document";
+import getCssVarColor from "../../../../../utils/getCssVarColor";
+import loadSingleColorSvg from "../../../../../utils/loadSingleColorSvg";
 
 function PaletteOption(id: string, name: string) {
   const paletteIcon = createElement("label", {

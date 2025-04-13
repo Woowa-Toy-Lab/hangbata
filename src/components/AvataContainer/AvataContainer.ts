@@ -13,7 +13,6 @@ function AvataContainer(targetId: string) {
     소품: avataList.template("소품"),
     특수효과: avataList.template("특수효과"),
     배경: avataList.template("배경"),
-    특수효과: avataList.template("특수효과"),
   };
 
   function replaceAvataList(key: Tkey) {
@@ -33,7 +32,10 @@ function AvataContainer(targetId: string) {
       avataListElements["몸통"]
     );
 
-    const avataContainer = createElement("div", { class: "avata-container" });
+    const avataContainer = createElement("div", {
+      id: "avataContainer",
+      class: "avata-container",
+    });
 
     const avataTabBar = AvataTabBar(replaceAvataList);
     avataContainer.append(avataTabBar.template(), avataListContainer);

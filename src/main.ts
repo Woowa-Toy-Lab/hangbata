@@ -1,6 +1,7 @@
 import AvataContainer from "./components/AvataContainer/AvataContainer";
+import AvataToolsContainer from "./components/AvataToolsContainer/AvataToolsContainer";
+import PaletteContainer from "./components/AvataToolsContainer/PaletteContainer/PaletteContainer";
 import { canvasInstance } from "./components/Canvas/Canvas";
-import PaletteContainer from "./components/PaletteContainer/PaletteContainer";
 import { createElement, getElement } from "./utils/document";
 import "./utils/event";
 
@@ -45,4 +46,4 @@ if (header) {
 const canvas = canvasInstance();
 
 const avataContainer = AvataContainer("#avataLayout");
-const colorPalette = PaletteContainer("#avataLayout");
+const avataToolsContainer = AvataToolsContainer("#avataLayout");
