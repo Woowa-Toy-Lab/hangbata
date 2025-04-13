@@ -1,35 +1,35 @@
 import { createElement } from "../../../../utils/document";
 import getCssVarColor from "../../../../utils/getCssVarColor";
-import loadSingleColorSvg from "../../../../utils/loadSingleColorSvg";
+import loadPaletteSvg from "../../../../utils/loadSingleColorSvg";
 
-function PaletteOption(id: string, name: string) {
+function ColorPalette(id: string, name: string) {
   const paletteIcon = createElement("label", {
     class: "palette-icon",
-    for: `${id}ColorPalette`,
+    for: `${id}PaletteIcon`,
   });
   let paletteColor = getCssVarColor(`--theme-${id}-color`);
   if (paletteColor === "rgba(0, 0, 0, 0)") paletteColor = "#000";
-  loadSingleColorSvg("palette", paletteColor).then((text) => {
+  loadPaletteSvg("palette", paletteColor).then((text) => {
     paletteIcon.innerHTML = text;
   });
 
   const inputColorPalette = createElement("input", {
     type: "color",
-    id: `${id}ColorPalette`,
-    class: "input-color-palette",
+    id: `${id}PaletteIcon`,
+    class: "input-palette-icon",
     name: id,
   });
 
   const inputLabel = createElement("label", {
-    for: `${id}ColorPalette`,
+    for: `${id}PaletteIcon`,
   });
   inputLabel.innerHTML = name;
 
   return createElement(
     "div",
     {
-      id: `${id}-palette`,
-      class: "palette-option",
+      id: `${id}-picker`,
+      class: "picker-container",
     },
     paletteIcon,
     inputColorPalette,
@@ -37,4 +37,4 @@ function PaletteOption(id: string, name: string) {
   );
 }
 
-export default PaletteOption;
+export default ColorPalette;

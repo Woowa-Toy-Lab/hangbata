@@ -1,5 +1,5 @@
 import { createElement, getElement } from "../../utils/document";
-import loadColoredSvg from "../../utils/loadColoredSvg";
+import loadThemedSvg from "../../utils/loadThemedSvg";
 import { Tkey } from "../AvataContainer/AvataList/AvataList";
 
 let instance: ReturnType<typeof Canvas> | null = null;
@@ -44,7 +44,7 @@ function Canvas(targetId: string) {
 
     const item = state[key];
     item.svgName = svgName;
-    item.element.innerHTML = await loadColoredSvg(svgName, true);
+    item.element.innerHTML = await loadThemedSvg(svgName, true);
     item.element.classList.remove("hidden");
   }
 

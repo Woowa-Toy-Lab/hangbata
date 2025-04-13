@@ -1,5 +1,5 @@
 import { createElement, getElement } from "../../utils/document";
-import loadPaletteSvg from "../../utils/loadPaletteSvg";
+import loadSingleColorSvg from "../../utils/loadSingleColorSvg";
 import PaletteDropdownContainer from "./PaletteDropdownContainer/PaletteDropdownContainer";
 
 function PaletteContainer(targetId: string) {
@@ -9,7 +9,7 @@ function PaletteContainer(targetId: string) {
     const paletteTrigger = createElement("div", {
       class: "palette-trigger",
     });
-    loadPaletteSvg("#fff").then((text) => {
+    loadSingleColorSvg("palette", "#fff").then((text) => {
       paletteTrigger.innerHTML = text;
     });
     paletteTrigger.addEventListener("click", () => {

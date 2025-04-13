@@ -1,12 +1,12 @@
 import { createElement } from "../../../../utils/document";
-import loadColoredSvg from "../../../../utils/loadColoredSvg";
+import loadThemedSvg from "../../../../utils/loadThemedSvg";
 
 function AvataItem(svgName: string) {
   const avataItem = createElement("div", {
     class: "avata-svg-img",
   });
 
-  loadColoredSvg(svgName, false).then((text) => {
+  loadThemedSvg(svgName, false).then((text) => {
     avataItem.innerHTML = text;
   });
 

@@ -1,6 +1,6 @@
 import getCssVarColor from "./getCssVarColor";
 
-function loadColoredSvg(svgName: string, isCanvas: boolean) {
+function loadThemedSvg(svgName: string, isCanvas: boolean) {
   let borderColor = "#fff";
   let themeBodyColor = "rgba(0,0,0,0)";
   let themeBandColor = "rgba(0,0,0,0)";
@@ -26,4 +26,4 @@ function loadColoredSvg(svgName: string, isCanvas: boolean) {
   return svgString;
 }
 
-export default loadColoredSvg;
+export default loadThemedSvg;
