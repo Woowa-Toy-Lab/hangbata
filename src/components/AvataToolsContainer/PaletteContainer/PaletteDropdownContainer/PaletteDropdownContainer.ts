@@ -1,4 +1,4 @@
-import { createElement, getElement } from "../../../utils/document";
+import { createElement, getElement } from "../../../../utils/document";
 import PaletteOption from "./PaletteOption/PaletteOption";
 
 function PaletteDropdownContainer() {

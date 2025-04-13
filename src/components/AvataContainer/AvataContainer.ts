@@ -46,7 +46,10 @@ function AvataContainer(targetId: string) {
       avataListElements["몸통"]
     );
 
-    const avataContainer = createElement("div", { class: "avata-container" });
+    const avataContainer = createElement("div", {
+      id: "avataContainer",
+      class: "avata-container",
+    });
 
     const avataTabBar = AvataTabBar(replaceAvataList);
     avataContainer.append(avataTabBar.template(), avataListContainer);
