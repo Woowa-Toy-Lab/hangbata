@@ -98,7 +98,7 @@ function Canvas(targetId: string) {
   }
 
   canvas.addEventListener("click", (e) => {
-    if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
+    if (!(e.target as HTMLElement)?.closest(".canvas-item")) {
       clearSelection();
     }
   });
