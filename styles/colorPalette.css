@@ -1,12 +1,25 @@
 .drop-down-container {
   position: absolute;
+}
+
+.drop-down-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+}
+
+.drop-down {
+  position: absolute;
   top: -10px;
   width: 200px;
   height: fit-content;
   background-color: white;
   border: 4px solid white;
   border-radius: 15px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .color-palette {
@@ -25,6 +38,8 @@
 
 .picker-icon {
   position: absolute;
+  right: 36px;
+  top: 0;
   opacity: 0;
   width: 1px;
   height: 1px;
