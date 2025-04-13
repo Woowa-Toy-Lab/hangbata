@@ -114,28 +114,25 @@ function Canvas(targetId: string) {
     const item = state[key];
     item.svgName = svgName;
     item.element.innerHTML = await loadThemedSvg(svgName, true);
-    //if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
-    // else if (key === "몸통") item.element.style.width = "50%";
-    // else if (key === "눈1" || key === "눈2" || key === "입")
-    //item.element.style.width = "8%";
 
     item.element.classList.remove("hidden");
   }
 
-  function removeCanvasImage(key: Tkey) {
-    if (key === "배경") {
+  function removeCanvasImage() {
+    if (!selectedElement) {
       const item = state["배경"];
       item.svgName = "";
       item.element.style.removeProperty("background-image");
       return;
     }
-
-    const item = state[key];
-    item.svgName = "";
-    item.element.classList.add("hidden");
+    selectedElement?.classList.add("hidden");
   }
 
-  return { setCanvasImage, removeCanvasImage };
+  return {
+    setCanvasImage,
+    removeCanvasImage,
+    getCurrentSelectedElement: () => selectedElement,
+  };
 }
 
 export function canvasInstance() {

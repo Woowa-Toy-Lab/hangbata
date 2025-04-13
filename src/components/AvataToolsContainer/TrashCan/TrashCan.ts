@@ -1,7 +1,6 @@
 import { createElement, getElement } from "../../../utils/document";
 import fillSVGPath from "../../../utils/fillSVGPath";
 import loadSingleColorSvg from "../../../utils/loadSingleColorSvg";
-import { Tkey } from "../../AvataContainer/AvataList/AvataList";
 import { canvasInstance } from "../../Canvas/Canvas";
 
 function TrashCan() {
@@ -13,36 +12,25 @@ function TrashCan() {
     trashCan.innerHTML = text;
   });
 
-  const labelMap: Record<string, Tkey> = {
-    bodyTab: "몸통",
-    eye1Tab: "눈1",
-    eye2Tab: "눈2",
-    mouthTab: "입",
-    itemTab: "소품",
-    effectTab: "특수효과",
-    backgroundTab: "배경",
-  };
-
   trashCan.addEventListener("click", () => {
-    const selectedTabElement = getElement(".avata-tab-item.selected");
-    const selectedTab = selectedTabElement?.id;
     const canvas = canvasInstance();
-    selectedTab && canvas.removeCanvasImage(labelMap[selectedTab]);
+    canvas.removeCanvasImage();
+    if (canvas.getCurrentSelectedElement()?.id === "canvasBody") {
+      const selectedAvataElement = getElement(".avata-svg-box.selected");
+      selectedAvataElement?.classList.remove("selected");
 
-    const selectedAvataElement = getElement(".avata-svg-box.selected");
-    selectedAvataElement?.classList.remove("selected");
+      document.documentElement.style.setProperty(
+        `--theme-body-color`,
+        "rgba(0, 0, 0, 0)"
+      );
+      document.documentElement.style.setProperty(
+        `--theme-band-color`,
+        "rgba(0, 0, 0, 0)"
+      );
 
-    document.documentElement.style.setProperty(
-      `--theme-body-color`,
-      "rgba(0, 0, 0, 0)"
-    );
-    document.documentElement.style.setProperty(
-      `--theme-band-color`,
-      "rgba(0, 0, 0, 0)"
-    );
-
-    fillSVGPath(`.palette-dropdown #body-palette #palette #stroke`, "#000 ");
-    fillSVGPath(`.palette-dropdown #band-palette #palette #stroke`, "#000 ");
+      fillSVGPath(`.palette-dropdown #body-palette #palette #stroke`, "#000 ");
+      fillSVGPath(`.palette-dropdown #band-palette #palette #stroke`, "#000 ");
+    }
   });
 
   return trashCan;
