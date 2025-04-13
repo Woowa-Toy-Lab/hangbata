@@ -8,9 +8,9 @@ function ColorPicker(id: string, name: string) {
     class: "picker-palette-icon",
     for: `${id}PickerIcon`,
   });
-  let paletterColor = getCssVarColor(`--theme-${id}-color`);
-  if (paletterColor === "rgba(0, 0, 0, 0)") paletterColor = "#000";
-  loadPaletteSvg(paletterColor).then((text) => {
+  let paletteColor = getCssVarColor(`--theme-${id}-color`);
+  if (paletteColor === "rgba(0, 0, 0, 0)") paletteColor = "#000";
+  loadPaletteSvg(paletteColor).then((text) => {
     paletteIcon.innerHTML = text;
   });
 
