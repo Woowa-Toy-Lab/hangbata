@@ -4,13 +4,15 @@ import AvataItem from "./AvataItem/AvataItem";
 
 const avataListData = {
   몸통: ["body1", "body2", "body3", "body4"],
-  표정: ["eye", "star-eye", "eye", "star-eye"],
+  눈1: ["eye70", "stareye70", "bangbangeye70", "hearteye70"],
+  눈2: ["eye70", "stareye70", "bangbangeye70", "hearteye70"],
+  입: ["mouth1", "mouth2", "mouth3", "mouth4"],
   소품: ["barbell", "coffee", "labtop", "magicwand"],
-  특수효과: [],
+  특수효과: ["effect1", "effect2", "effect3", "effect4"],
   배경: ["background1", "background2", "background3", "background4"],
 };
 
-export type Tkey = "몸통" | "표정" | "소품" | "특수효과" | "배경";
+export type Tkey = "몸통" | "눈1" | "눈2" | "입" | "소품" | "특수효과" | "배경";
 
 function AvataList() {
   function onClickHandler(key: Tkey) {

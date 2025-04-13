@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .canvas-layout {
@@ -18,11 +19,44 @@
 }
 
 .canvas-item {
-  display: flex;
-  height: 100%;
+  position: absolute;
+  height: auto;
   width: auto;
+  user-drag: none;
+  -webkit-user-drag: none;
+
+  &.body {
+    width: 50%;
+  }
+
+  &.effect {
+    width: 30%;
+  }
+
+  &.selected {
+    outline: 2px solid #ff7b00;
+  }
+
+  &:hover {
+    outline: 2px solid #0c8ce9;
+  }
+
+  &.face {
+    height: 30px;
+  }
 }
 
 .hidden {
   display: none;
+}
+
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background: #0c8ce9;
+  cursor: se-resize;
+  z-index: 10;
 }
