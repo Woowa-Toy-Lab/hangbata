@@ -1,0 +1,10 @@
+.download-container {
+  position: absolute;
+  top: -64px;
+  left: 54px;
+}
+
+.download-icon {
+  width: 54px;
+  cursor: pointer;
+}

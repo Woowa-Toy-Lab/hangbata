@@ -1,4 +1,6 @@
 import { createElement, getElement } from "../../utils/document";
+import loadSingleColorSvg from "../../utils/loadSingleColorSvg";
+import downloadMergedSVG from "./downloadMergedSVG";
 
 function DownloadContainer(targetId: string) {
   const target = getElement(targetId);
@@ -7,12 +9,21 @@ function DownloadContainer(targetId: string) {
     const download = createElement("div", {
       class: "download-icon",
     });
-    download.addEventListener("click", () => {});
-
-    const downloadContainer = createElement("div", {
-      id: "downloadContainer",
-      class: "download-container",
+    loadSingleColorSvg("download", "#fff").then((text) => {
+      download.innerHTML = text;
     });
+    download.addEventListener("click", () => {
+      downloadMergedSVG();
+    });
+
+    const downloadContainer = createElement(
+      "div",
+      {
+        id: "downloadContainer",
+        class: "download-container",
+      },
+      download
+    );
 
     target?.append(downloadContainer);
   }
