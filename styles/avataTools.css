@@ -15,6 +15,18 @@
   filter: brightness(0.7);
 }
 
+/* download */
+
+.download-icon {
+  width: 54px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.download-icon:hover {
+  filter: brightness(0.7);
+}
+
 /* palette */
 .palette-drop-down-container {
   position: absolute;

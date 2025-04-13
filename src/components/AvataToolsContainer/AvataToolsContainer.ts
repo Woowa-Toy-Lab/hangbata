@@ -1,4 +1,5 @@
 import { createElement, getElement } from "../../utils/document";
+import Download from "./Download/Download";
 import PaletteContainer from "./PaletteContainer/PaletteContainer";
 import TrashCan from "./TrashCan/TrashCan";
 
@@ -8,6 +9,7 @@ function AvataToolsContainer(targetId: string) {
   function render() {
     const colorPalette = PaletteContainer();
     const trashCan = TrashCan();
+    const download = Download();
 
     const avataToolsContainer = createElement(
       "div",
@@ -16,6 +18,7 @@ function AvataToolsContainer(targetId: string) {
         class: "avata-tools-container",
       },
       colorPalette,
+      download,
       trashCan
     );
 
