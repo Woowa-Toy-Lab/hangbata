@@ -1,8 +1,8 @@
-.drop-down-container {
+.palette-drop-down-container {
   position: absolute;
 }
 
-.drop-down-background {
+.palette-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,9 +11,14 @@
   background: rgba(0, 0, 0, 0);
 }
 
-.drop-down {
+.palette-container {
   position: absolute;
-  top: -10px;
+  top: -64px;
+  left: 0;
+}
+
+.palette-dropdown {
+  position: relative;
   width: 200px;
   height: fit-content;
   background-color: white;
@@ -22,21 +27,18 @@
   z-index: 1;
 }
 
-.color-palette {
-  position: absolute;
-  top: -64px;
-  width: 54px;
+.palette-trigger {
   height: 54px;
   cursor: pointer;
 }
 
-.picker-container {
+.palette-option {
   display: flex;
   align-items: center;
   padding-left: 12px;
 }
 
-.picker-icon {
+.input-color-palette {
   position: absolute;
   right: 36px;
   top: 0;
@@ -46,7 +48,7 @@
   pointer-events: none;
 }
 
-.picker-palette-icon {
+.palette-icon {
   width: 54px;
   height: 54px;
 }
