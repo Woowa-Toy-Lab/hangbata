@@ -98,7 +98,7 @@ function Canvas(targetId: string) {
   }
 
   canvas.addEventListener("click", (e) => {
-    if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
+    if (!(e.target as HTMLElement)?.closest(".canvas-item")) {
       clearSelection();
     }
   });
@@ -114,15 +114,25 @@ function Canvas(targetId: string) {
     const item = state[key];
     item.svgName = svgName;
     item.element.innerHTML = await loadThemedSvg(svgName, true);
-    //if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
-    // else if (key === "몸통") item.element.style.width = "50%";
-    // else if (key === "눈1" || key === "눈2" || key === "입")
-    //item.element.style.width = "8%";
 
     item.element.classList.remove("hidden");
   }
 
-  return { setCanvasImage };
+  function removeCanvasImage() {
+    if (!selectedElement) {
+      const item = state["배경"];
+      item.svgName = "";
+      item.element.style.removeProperty("background-image");
+      return;
+    }
+    selectedElement?.classList.add("hidden");
+  }
+
+  return {
+    setCanvasImage,
+    removeCanvasImage,
+    getCurrentSelectedElement: () => selectedElement,
+  };
 }
 
 export function canvasInstance() {

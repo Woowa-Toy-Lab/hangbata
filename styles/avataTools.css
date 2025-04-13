@@ -1,3 +1,21 @@
+.avata-tools-container {
+  display: flex;
+  position: absolute;
+  top: -64px;
+  left: 0;
+}
+
+/* trash-can */
+.trash-can-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.trash-can-icon:hover {
+  filter: brightness(0.7);
+}
+
+/* palette */
 .palette-drop-down-container {
   position: absolute;
 }
@@ -9,12 +27,6 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0);
-}
-
-.palette-container {
-  position: absolute;
-  top: -64px;
-  left: 0;
 }
 
 .palette-dropdown {
@@ -29,7 +41,12 @@
 
 .palette-trigger {
   height: 54px;
+  transition: transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
+}
+
+.palette-trigger:hover {
+  filter: brightness(0.7);
 }
 
 .palette-option {
