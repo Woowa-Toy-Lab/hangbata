@@ -58,11 +58,12 @@ function Canvas(targetId: string) {
   function selectElement(el: HTMLElement) {
     clearSelection();
     selectedElement = el;
+    selectedElement.classList.add("selected");
   }
 
   function clearSelection() {
     if (selectedElement) {
-      selectedElement.style.border = "";
+      selectedElement.classList.remove("selected");
       selectedElement = null;
     }
   }
@@ -96,10 +97,12 @@ function Canvas(targetId: string) {
     });
   }
 
-  document.addEventListener("mousedown", (e) => {
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
     if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
       clearSelection();
     }
+    selectElement(target);
   });
 
   async function setCanvasImage(key: Tkey, svgName: string) {
