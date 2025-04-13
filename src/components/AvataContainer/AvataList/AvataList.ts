@@ -27,11 +27,13 @@ function AvataList() {
 
   function template(key: Tkey) {
     const avataList = avataListData[key].map((svgName) => AvataItem(svgName));
+
     const avataListContainer = createElement(
       "div",
       { id: "avataListContainer", class: "avata-list-box" },
       ...avataList
     );
+
     const clickHandler = onClickHandler(key);
     avataListContainer.removeEventListener("click", clickHandler);
     avataListContainer.addEventListener("click", clickHandler);

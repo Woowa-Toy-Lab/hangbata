@@ -10,6 +10,7 @@ function AvataContainer(targetId: string) {
     표정: avataList.template("표정"),
     소품: avataList.template("소품"),
     배경: avataList.template("배경"),
+    특수효과: avataList.template("특수효과"),
   };
 
   function replaceAvataList(key: Tkey) {

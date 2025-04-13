@@ -4,3 +4,10 @@
 @import "./main.css";
 @import "./avata.css";
 @import "./canvas.css";
+@import "./colorPalette.css";
+
+:root {
+  --theme-body-color: rgba(0, 0, 0, 0);
+  --theme-band-color: rgba(0, 0, 0, 0);
+  --theme-border-color: #000;
+}

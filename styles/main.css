@@ -24,3 +24,11 @@
   justify-content: center;
   align-items: center;
 }
+
+canvas {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
