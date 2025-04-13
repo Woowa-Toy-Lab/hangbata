@@ -48,7 +48,20 @@ function Canvas(targetId: string) {
     item.element.classList.remove("hidden");
   }
 
-  return { setCanvasImage };
+  function removeCanvasImage(key: Tkey) {
+    if (key === "배경") {
+      const item = state["배경"];
+      item.svgName = "";
+      item.element.style.removeProperty("background-image");
+      return;
+    }
+
+    const item = state[key];
+    item.svgName = "";
+    item.element.classList.add("hidden");
+  }
+
+  return { setCanvasImage, removeCanvasImage };
 }
 
 export function canvasInstance() {

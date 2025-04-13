@@ -8,6 +8,11 @@
 /* trash-can */
 .trash-can-icon {
   cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.trash-can-icon:hover {
+  filter: brightness(0.7);
 }
 
 /* palette */
@@ -36,7 +41,12 @@
 
 .palette-trigger {
   height: 54px;
+  transition: transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
+}
+
+.palette-trigger:hover {
+  filter: brightness(0.7);
 }
 
 .palette-option {
