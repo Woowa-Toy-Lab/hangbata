@@ -50,7 +50,10 @@ function Canvas(targetId: string) {
     배경: { svgName: "", element: canvas },
   };
 
-  const draggedElements = new WeakSet<Element>();
+  Object.values(state).forEach(({ element }) => {
+    if (element !== canvas) onDragHandler(element);
+  });
+
   let selectedElement: HTMLElement | null = null;
 
   function selectElement(el: HTMLElement) {
@@ -67,9 +70,6 @@ function Canvas(targetId: string) {
   }
 
   function onDragHandler(el: HTMLElement) {
-    if (draggedElements.has(el)) return;
-    draggedElements.add(el);
-
     let isDragging = false;
     let offsetX = 0;
     let offsetY = 0;
@@ -96,11 +96,9 @@ function Canvas(targetId: string) {
   }
 
   canvas.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
     if (!(e.target as HTMLElement)?.classList?.contains("canvas-item")) {
       clearSelection();
     }
-    selectElement(target);
   });
 
   function setCanvasImage(key: Tkey, svgName: string) {
@@ -116,7 +114,6 @@ function Canvas(targetId: string) {
     item.element.src = `/img/${svgName}.svg`;
     if (key === "특수효과" || key === "소품") item.element.style.width = "30%";
     item.element.classList.remove("hidden");
-    onDragHandler(item.element);
   }
 
   return { setCanvasImage };
