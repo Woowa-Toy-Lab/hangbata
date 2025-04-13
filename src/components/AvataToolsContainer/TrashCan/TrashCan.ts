@@ -14,9 +14,11 @@ function TrashCan() {
 
   const labelMap: Record<string, Tkey> = {
     bodyTab: "몸통",
-    faceTab: "표정",
+    eye1Tab: "눈1",
+    eye2Tab: "눈2",
+    mouthTab: "입",
     itemTab: "소품",
-    faceTab2: "특수효과",
+    effectTab: "특수효과",
     backgroundTab: "배경",
   };
 
