@@ -1,3 +1,16 @@
+.avata-tools-container {
+  display: flex;
+  position: absolute;
+  top: -64px;
+  left: 0;
+}
+
+/* trash-can */
+.trash-can-icon {
+  cursor: pointer;
+}
+
+/* palette */
 .palette-drop-down-container {
   position: absolute;
 }
@@ -9,12 +22,6 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0);
-}
-
-.palette-container {
-  position: absolute;
-  top: -64px;
-  left: 0;
 }
 
 .palette-dropdown {
