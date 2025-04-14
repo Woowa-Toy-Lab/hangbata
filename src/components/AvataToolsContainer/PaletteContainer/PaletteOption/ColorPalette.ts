@@ -22,6 +22,9 @@ function ColorPalette(id: string) {
   });
 
   inputColorPalette.addEventListener("input", (event) => {
+    if (getElement("#canvasBody")?.classList.contains("hidden")) {
+      window.alert("행성이를 먼저 선택한 후 색을 정해주세요");
+    }
     const { targetColor, targetArea } = getColorAndTarget(event);
     const el = getElement("#canvasBody svg")!.id;
     fillSVGPath(`.canvas #${el} #${targetArea}`, targetColor);
@@ -32,6 +35,7 @@ function ColorPalette(id: string) {
   });
 
   inputColorPalette.addEventListener("change", (event) => {
+    if (getElement("#canvasBody")?.classList.contains("hidden")) return;
     const { targetColor, targetArea } = getColorAndTarget(event);
     changeColor(targetArea, targetColor);
   });
