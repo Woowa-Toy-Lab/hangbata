@@ -1,6 +1,6 @@
 import { createElement, getElement } from "../../utils/document";
 
-function DropdownContainer(dropdownOptions: Element[]) {
+function DropdownContainer(id: string, dropdownOptions: Element[]) {
   const dropdown = createElement(
     "div",
     {
@@ -13,13 +13,13 @@ function DropdownContainer(dropdownOptions: Element[]) {
     class: "dropdown-overlay",
   });
   dropdownOverlay.addEventListener("click", () => {
-    getElement("#dropdownContainer")?.classList.toggle("hidden");
+    getElement(`#${id}`)?.classList.toggle("hidden");
   });
 
   const dropdownContainer = createElement(
     "div",
     {
-      id: "dropdownContainer",
+      id,
       class: "drop-down-container hidden ",
     },
     dropdown,

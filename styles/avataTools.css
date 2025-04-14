@@ -16,7 +16,6 @@
 }
 
 /* download */
-
 .download-icon {
   width: 54px;
   cursor: pointer;
@@ -25,6 +24,16 @@
 
 .download-icon:hover {
   filter: brightness(0.7);
+}
+
+.download-option {
+  padding: 12px 12px 12px 24px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+.download-option :hover {
+  background-color: red;
 }
 
 /* palette */

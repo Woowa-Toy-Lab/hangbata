@@ -11,7 +11,8 @@ async function fetchImageAsBase64(url: string): Promise<string> {
 export async function downloadAvatar(format: string) {
   const canvasEl = document.querySelector(".canvas") as HTMLElement;
   const backgroundUrl = getComputedStyle(canvasEl).backgroundImage;
-  const fullUrl = backgroundUrl.match(/url\("?(.+?)"?\)/)?.[1] || "";
+  const extractedUrl = backgroundUrl.match(/url\(["']?(.+?)["']?\)/)?.[1] || "";
+  const fullUrl = extractedUrl.includes("canvas") ? "" : extractedUrl;
 
   let backgroundBase64 = "";
   if (fullUrl) {

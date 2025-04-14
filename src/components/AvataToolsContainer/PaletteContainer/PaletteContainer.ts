@@ -11,7 +11,7 @@ function PaletteContainer() {
     paletteTrigger.innerHTML = text;
   });
   paletteTrigger.addEventListener("click", () => {
-    getElement("#dropdownContainer")?.classList.toggle("hidden");
+    getElement("#paletteDropdownContainer")?.classList.toggle("hidden");
   });
 
   const paletteContainer = createElement(
@@ -21,7 +21,7 @@ function PaletteContainer() {
       class: "palette-container",
     },
     paletteTrigger,
-    DropdownContainer([
+    DropdownContainer("paletteDropdownContainer", [
       PaletteOption("body", "행성"),
       PaletteOption("band", "행성 띠"),
     ])
