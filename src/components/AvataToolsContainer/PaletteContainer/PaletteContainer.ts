@@ -1,6 +1,7 @@
 import { createElement, getElement } from "../../../utils/document";
 import loadSingleColorSvg from "../../../utils/loadSingleColorSvg";
-import PaletteDropdownContainer from "./PaletteDropdownContainer/PaletteDropdownContainer";
+import DropdownContainer from "../../DropdownContainer/DropdownContainer";
+import PaletteOption from "./PaletteOption/PaletteOption";
 
 function PaletteContainer() {
   const paletteTrigger = createElement("div", {
@@ -10,7 +11,7 @@ function PaletteContainer() {
     paletteTrigger.innerHTML = text;
   });
   paletteTrigger.addEventListener("click", () => {
-    getElement("#paletteDropdownContainer")?.classList.toggle("hidden");
+    getElement("#dropdownContainer")?.classList.toggle("hidden");
   });
 
   const paletteContainer = createElement(
@@ -20,7 +21,10 @@ function PaletteContainer() {
       class: "palette-container",
     },
     paletteTrigger,
-    PaletteDropdownContainer()
+    DropdownContainer([
+      PaletteOption("body", "행성"),
+      PaletteOption("band", "행성 띠"),
+    ])
   );
 
   return paletteContainer;

@@ -1,6 +1,7 @@
-import { createElement } from "../../../../../utils/document";
-import getCssVarColor from "../../../../../utils/getCssVarColor";
-import loadSingleColorSvg from "../../../../../utils/loadSingleColorSvg";
+import { createElement } from "../../../../utils/document";
+import getCssVarColor from "../../../../utils/getCssVarColor";
+import loadSingleColorSvg from "../../../../utils/loadSingleColorSvg";
+import ColorPalette from "./ColorPalette";
 
 function PaletteOption(id: string, name: string) {
   const paletteIcon = createElement("label", {
@@ -13,19 +14,14 @@ function PaletteOption(id: string, name: string) {
     paletteIcon.innerHTML = text;
   });
 
-  const inputColorPalette = createElement("input", {
-    type: "color",
-    id: `${id}ColorPalette`,
-    class: "input-color-palette",
-    name: id,
-  });
+  const inputColorPalette = ColorPalette(id);
 
   const inputLabel = createElement("label", {
     for: `${id}ColorPalette`,
   });
   inputLabel.innerHTML = name;
 
-  return createElement(
+  const paletteOption = createElement(
     "div",
     {
       id: `${id}-palette`,
@@ -35,6 +31,8 @@ function PaletteOption(id: string, name: string) {
     inputColorPalette,
     inputLabel
   );
+
+  return paletteOption;
 }
 
 export default PaletteOption;

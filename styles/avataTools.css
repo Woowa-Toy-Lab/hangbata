@@ -28,11 +28,11 @@
 }
 
 /* palette */
-.palette-drop-down-container {
+.drop-down-container {
   position: absolute;
 }
 
-.palette-overlay {
+.dropdown-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -41,7 +41,7 @@
   background: rgba(0, 0, 0, 0);
 }
 
-.palette-dropdown {
+.dropdown {
   position: relative;
   width: 200px;
   height: fit-content;

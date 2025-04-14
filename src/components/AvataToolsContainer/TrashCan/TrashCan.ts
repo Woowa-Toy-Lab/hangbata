@@ -28,8 +28,8 @@ function TrashCan() {
         "rgba(0, 0, 0, 0)"
       );
 
-      fillSVGPath(`.palette-dropdown #body-palette #palette #stroke`, "#000 ");
-      fillSVGPath(`.palette-dropdown #band-palette #palette #stroke`, "#000 ");
+      fillSVGPath(`.dropdown #body-palette #palette #stroke`, "#000 ");
+      fillSVGPath(`.dropdown #band-palette #palette #stroke`, "#000 ");
     }
   });
 
