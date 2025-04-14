@@ -5,59 +5,17 @@
   left: 0;
 }
 
-/* trash-can */
-.trash-can-icon {
-  cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.trash-can-icon:hover {
-  filter: brightness(0.7);
-}
-
-/* download */
-.download-icon {
-  width: 54px;
-  cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.download-icon:hover {
-  filter: brightness(0.7);
-}
-
-.download-option {
-  padding: 12px 12px 12px 24px;
-  transition: transform 0.2s ease, filter 0.2s ease;
-  cursor: pointer;
-}
-
-.download-option :hover {
-  background-color: red;
-}
-
 /* palette */
-.drop-down-container {
-  position: absolute;
+
+.palette-icon {
+  width: 54px;
+  height: 54px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.dropdown-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0);
-}
-
-.dropdown {
-  position: relative;
-  width: 200px;
-  height: fit-content;
-  background-color: white;
-  border: 4px solid white;
-  border-radius: 15px;
-  z-index: 1;
+.palette-icon:hover {
+  filter: invert(0.5);
 }
 
 .palette-trigger {
@@ -90,8 +48,57 @@
   pointer-events: none;
 }
 
-.palette-icon {
+/* download */
+.download-icon {
   width: 54px;
-  height: 54px;
   cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.download-icon:hover {
+  filter: brightness(0.7);
+}
+
+.download-option {
+  padding: 12px 12px 12px 24px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+.download-option:hover {
+  filter: invert(0.5);
+}
+
+/* trash-can */
+.trash-can-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.trash-can-icon:hover {
+  filter: brightness(0.7);
+}
+
+/* dropdown */
+.drop-down-container {
+  position: absolute;
+}
+
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+}
+
+.dropdown {
+  position: relative;
+  width: 200px;
+  height: fit-content;
+  background-color: white;
+  border: 4px solid white;
+  border-radius: 15px;
+  z-index: 1;
 }
