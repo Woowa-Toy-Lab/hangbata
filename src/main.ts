@@ -24,7 +24,7 @@ const logoBox = createElement(
   "div",
   { class: "logo-box" },
   createElement("img", {
-    src: "/img/logo-alpha.svg",
+    src: "./img/logo-alpha.svg",
     alt: "hangbata logo image",
   })
 );

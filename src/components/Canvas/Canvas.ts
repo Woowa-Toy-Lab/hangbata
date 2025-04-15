@@ -107,7 +107,7 @@ function Canvas(targetId: string) {
     if (key === "배경") {
       const item = state["배경"];
       item.svgName = svgName;
-      item.element.style.backgroundImage = `url(/img/${svgName}.svg)`;
+      item.element.style.backgroundImage = `url(./img/${svgName}.svg)`;
       return;
     }
 
