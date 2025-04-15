@@ -1,0 +1,520 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+@font-face {
+  font-family: "BMHANNAPro";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: "BMHANNAPro", sans-serif;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "BMkkubulimTTF-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BMHANNAAir";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tx-xxl {
+  font-family: "BMkkubulimTTF-Regular";
+  font-size: 64px;
+}
+
+.tx-xl {
+  font-size: 48px;
+}
+
+.tx-lg {
+  font-size: 32px;
+}
+
+.tx-md {
+  font-size: 24px;
+}
+
+.tx-sm {
+  font-size: 18px;
+  font-family: "BMHANNAAir";
+}
+
+.tx-xs {
+  font-size: 14px;
+  font-family: "BMHANNAAir";
+}
+
+.header {
+  position: fixed;
+  color: white;
+}
+
+.logo-container {
+  position: relative;
+  display: flex;
+}
+
+.title-box {
+  position: absolute;
+  inset: 32px 0 0 176px;
+  width: 300px;
+}
+
+.logo-box {
+  position: absolute;
+  inset: -8px 8px 0 16px;
+  width: 150px;
+  height: 150px;
+  color: white;
+}
+
+.logo-box img {
+  position: absolute;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-image: url("/hangbata/img/mainBackground-1.png");
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avata-layout {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.avata-layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.avata-container {
+  width: 100%;
+  max-width: 900px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+}
+
+.avata-list-container {
+  width: 100%;
+  max-width: 900px;
+  height: 150px;
+  position: relative;
+  border: 4px solid white;
+  border-radius: 0 15px 15px 15px;
+}
+
+.avata-tab-bar {
+  width: fit-content;
+  max-width: 752px;
+  display: flex;
+  border: 4px solid white;
+  border-bottom: 0;
+  border-radius: 15px 15px 0 0;
+}
+
+.avata-tab-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  border-right: 2px dashed white;
+  padding: 4px 20px;
+
+  &:hover {
+    background-color: #001b2c50;
+  }
+  &.selected {
+    background-color: #ffffff;
+    color: #043e62;
+  }
+}
+
+.avata-tab-item:last-child {
+  border-right: none;
+}
+
+.avata-tab-name {
+}
+
+.arrow-icon {
+  position: absolute;
+}
+
+#prevArrow {
+  left: -80px;
+}
+
+#nextArrow {
+  right: -80px;
+}
+
+/* avata container */
+
+.avata-list-box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.avata-svg-box {
+  width: 100%;
+  min-width: 180px;
+  height: 120px;
+  object-fit: contain;
+  border: 4px solid transparent;
+  overflow: hidden;
+  &.selected {
+    border: 4px solid #55ffdd;
+    border-radius: 15px;
+  }
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.avata-svg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.canvas {
+  position: relative;
+  background-image: url("/hangbata/img/canvas.png");
+  background-size: cover;
+  width: 440px;
+  height: 240px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.canvas-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.canvas-item {
+  position: absolute;
+  height: auto;
+  width: auto;
+  user-drag: none;
+  -webkit-user-drag: none;
+
+  &.body {
+    width: 50%;
+  }
+
+  &.effect {
+    width: 30%;
+  }
+
+  &.selected {
+    outline: 2px solid #ff7b00;
+  }
+
+  &:hover {
+    outline: 2px solid #0c8ce9;
+  }
+
+  &.face {
+    height: 30px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background: #0c8ce9;
+  cursor: se-resize;
+  z-index: 10;
+}
+
+.avata-tools-container {
+  display: flex;
+  position: absolute;
+  top: -64px;
+  left: 0;
+}
+
+/* trash-can */
+
+.trash-can-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.trash-can-icon:hover {
+  filter: brightness(0.7);
+}
+
+/* palette */
+
+.palette-drop-down-container {
+  position: absolute;
+}
+
+.palette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+}
+
+.palette-dropdown {
+  position: relative;
+  width: 200px;
+  height: fit-content;
+  background-color: white;
+  border: 4px solid white;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.palette-trigger {
+  height: 54px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+.palette-trigger:hover {
+  filter: brightness(0.7);
+}
+
+.palette-option {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+
+  & label {
+    cursor: pointer;
+  }
+}
+
+.input-color-palette {
+  position: absolute;
+  right: 36px;
+  top: 0;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.palette-icon {
+  width: 54px;
+  height: 54px;
+  cursor: pointer;
+}
+
+:root {
+  --theme-body-color: rgba(0, 0, 0, 0);
+  --theme-band-color: rgba(0, 0, 0, 0);
+  --theme-border-color: #000;
+}
