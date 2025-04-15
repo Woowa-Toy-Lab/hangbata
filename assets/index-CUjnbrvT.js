@@ -327,12 +327,199 @@ function AvataContainer(targetId) {
 function loadSingleColorSvg(svgName, color) {
   return fetch(`img/${svgName}.svg`).then((res) => res.text()).then((res) => res.replace(/__FILL__/g, color));
 }
+function DropdownContainer(id, dropdownOptions) {
+  const dropdown = createElement(
+    "div",
+    {
+      class: "dropdown"
+    },
+    ...dropdownOptions
+  );
+  const dropdownOverlay = createElement("div", {
+    class: "dropdown-overlay"
+  });
+  dropdownOverlay.addEventListener("click", () => {
+    var _a;
+    (_a = getElement(`#${id}`)) == null ? void 0 : _a.classList.toggle("hidden");
+  });
+  const dropdownContainer = createElement(
+    "div",
+    {
+      id,
+      class: "drop-down-container hidden "
+    },
+    dropdown,
+    dropdownOverlay
+  );
+  return dropdownContainer;
+}
+async function fetchImageAsBase64(url) {
+  const res = await fetch(url, { mode: "cors" });
+  const blob = await res.blob();
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
+async function downloadAvatar(format) {
+  var _a;
+  const canvasEl = document.querySelector(".canvas");
+  const backgroundUrl = getComputedStyle(canvasEl).backgroundImage;
+  const extractedUrl = ((_a = backgroundUrl.match(/url\(["']?(.+?)["']?\)/)) == null ? void 0 : _a[1]) || "";
+  const fullUrl = extractedUrl.includes("canvas") ? "" : extractedUrl;
+  let backgroundBase64 = "";
+  if (fullUrl) {
+    try {
+      backgroundBase64 = await fetchImageAsBase64(fullUrl);
+    } catch (err) {
+      console.warn("⚠️ 배경 이미지 base64 변환 실패", err);
+    }
+  }
+  const svgList = Array.from(
+    canvasEl.querySelectorAll(".canvas-item:not(.hidden) > svg")
+  );
+  const canvasRect = canvasEl.getBoundingClientRect();
+  const targetWidth = 1920;
+  const scale = targetWidth / canvasRect.width;
+  const targetHeight = canvasRect.height * scale;
+  const combinedSvgInner = svgList.map((svg) => {
+    const wrapper = svg.closest(".canvas-item");
+    const rect = wrapper.getBoundingClientRect();
+    const offsetX = rect.left - canvasRect.left;
+    const offsetY = rect.top - canvasRect.top;
+    const width = rect.width;
+    const height = rect.height;
+    const clonedSvg = svg.cloneNode(true);
+    clonedSvg.setAttribute("width", width.toString());
+    clonedSvg.setAttribute("height", height.toString());
+    return `
+          <g transform="translate(${offsetX}, ${offsetY})">
+            ${new XMLSerializer().serializeToString(clonedSvg)}
+          </g>
+        `;
+  }).join("\n");
+  const backgroundImageElement = backgroundBase64 ? `<image href="${backgroundBase64}" x="0" y="0" width="${canvasRect.width}" height="${canvasRect.height}" preserveAspectRatio="none"/>` : "";
+  const finalSvg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${targetWidth}" height="${targetHeight}" viewBox="0 0 ${canvasRect.width} ${canvasRect.height}">
+        ${backgroundImageElement}
+        ${combinedSvgInner}
+      </svg>
+    `.trim();
+  if (format === "svg") {
+    const blob = new Blob([finalSvg], {
+      type: "image/svg+xml;charset=utf-8"
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "out.svg";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } else if (format === "png") {
+    const svgBlob = new Blob([finalSvg], {
+      type: "image/svg+xml;charset=utf-8"
+    });
+    const url = URL.createObjectURL(svgBlob);
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "나만의 행성이.png";
+      link.click();
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  }
+}
+function DownloadOption(type) {
+  const downloadOption = createElement("div", {
+    class: "download-option"
+  });
+  downloadOption.innerHTML = `${type} 다운로드`;
+  downloadOption.addEventListener("click", () => {
+    downloadAvatar(type);
+  });
+  return downloadOption;
+}
+function DownloadContainer() {
+  const download = createElement("div", {
+    class: "download-icon"
+  });
+  loadSingleColorSvg("download", "#fff").then((text) => {
+    download.innerHTML = text;
+  });
+  download.addEventListener("click", () => {
+    var _a;
+    (_a = getElement("#downloadDropdownContainer")) == null ? void 0 : _a.classList.toggle("hidden");
+  });
+  const downloadContainer = createElement(
+    "div",
+    {
+      id: "downloadContainer",
+      class: "download-container"
+    },
+    download,
+    DropdownContainer("downloadDropdownContainer", [
+      DownloadOption("png"),
+      DownloadOption("svg")
+    ])
+  );
+  return downloadContainer;
+}
 function fillSVGPath(targetElement, targetColor) {
   const SVG = getElement(targetElement);
   const paths = SVG == null ? void 0 : SVG.querySelectorAll("path");
   paths == null ? void 0 : paths.forEach((path) => {
     path.setAttribute("fill", targetColor);
   });
+}
+function ColorPalette(id) {
+  function getColorAndTarget(event) {
+    var _a;
+    const target = event.target;
+    const targetColor = target.value;
+    const targetId = target.closest(".palette-option").id;
+    const targetArea = ((_a = targetId.match(/^(.+?)-palette$/)) == null ? void 0 : _a[1]) ?? "";
+    return { targetColor, targetArea };
+  }
+  function changeColor(name, color) {
+    document.documentElement.style.setProperty(`--theme-${name}-color`, color);
+  }
+  const inputColorPalette = createElement("input", {
+    type: "color",
+    id: `${id}ColorPalette`,
+    class: "input-color-palette",
+    name: id
+  });
+  inputColorPalette.addEventListener("input", (event) => {
+    var _a;
+    if ((_a = getElement("#canvasBody")) == null ? void 0 : _a.classList.contains("hidden")) {
+      window.alert("행성이를 먼저 선택한 후 색을 정해주세요");
+    }
+    const { targetColor, targetArea } = getColorAndTarget(event);
+    const el = getElement("#canvasBody svg").id;
+    fillSVGPath(`.canvas #${el} #${targetArea}`, targetColor);
+    fillSVGPath(
+      `.dropdown #${targetArea}-palette #palette #stroke`,
+      targetColor
+    );
+  });
+  inputColorPalette.addEventListener("change", (event) => {
+    var _a;
+    if ((_a = getElement("#canvasBody")) == null ? void 0 : _a.classList.contains("hidden")) return;
+    const { targetColor, targetArea } = getColorAndTarget(event);
+    changeColor(targetArea, targetColor);
+  });
+  return inputColorPalette;
 }
 function PaletteOption(id, name) {
   const paletteIcon = createElement("label", {
@@ -344,17 +531,12 @@ function PaletteOption(id, name) {
   loadSingleColorSvg("palette", paletteColor).then((text) => {
     paletteIcon.innerHTML = text;
   });
-  const inputColorPalette = createElement("input", {
-    type: "color",
-    id: `${id}ColorPalette`,
-    class: "input-color-palette",
-    name: id
-  });
+  const inputColorPalette = ColorPalette(id);
   const inputLabel = createElement("label", {
     for: `${id}ColorPalette`
   });
   inputLabel.innerHTML = name;
-  return createElement(
+  const paletteOption = createElement(
     "div",
     {
       id: `${id}-palette`,
@@ -364,56 +546,7 @@ function PaletteOption(id, name) {
     inputColorPalette,
     inputLabel
   );
-}
-function PaletteDropdownContainer() {
-  function changeColor(name, color) {
-    document.documentElement.style.setProperty(`--theme-${name}-color`, color);
-  }
-  function getColorAndTarget(event) {
-    var _a;
-    const target = event.target;
-    const targetColor = target.value;
-    const targetId = target.closest(".palette-option").id;
-    const targetArea = ((_a = targetId.match(/^(.+?)-palette$/)) == null ? void 0 : _a[1]) ?? "";
-    return { targetColor, targetArea };
-  }
-  const paletteDropdown = createElement(
-    "div",
-    {
-      class: "palette-dropdown"
-    },
-    PaletteOption("body", "행성"),
-    PaletteOption("band", "행성 띠")
-  );
-  paletteDropdown.addEventListener("input", (event) => {
-    const { targetColor, targetArea } = getColorAndTarget(event);
-    const el = getElement("#canvasBody svg").id;
-    fillSVGPath(`.canvas #${el} #${targetArea}`, targetColor);
-    fillSVGPath(
-      `.palette-dropdown #${targetArea}-palette #palette #stroke`,
-      targetColor
-    );
-  });
-  paletteDropdown.addEventListener("change", (event) => {
-    const { targetColor, targetArea } = getColorAndTarget(event);
-    changeColor(targetArea, targetColor);
-  });
-  const paletteOverlay = createElement("div", {
-    class: "palette-overlay"
-  });
-  paletteOverlay.addEventListener("click", () => {
-    var _a;
-    (_a = getElement("#paletteDropdownContainer")) == null ? void 0 : _a.classList.toggle("hidden");
-  });
-  return createElement(
-    "div",
-    {
-      id: "paletteDropdownContainer",
-      class: "palette-drop-down-container hidden "
-    },
-    paletteDropdown,
-    paletteOverlay
-  );
+  return paletteOption;
 }
 function PaletteContainer() {
   const paletteTrigger = createElement("div", {
@@ -433,7 +566,10 @@ function PaletteContainer() {
       class: "palette-container"
     },
     paletteTrigger,
-    PaletteDropdownContainer()
+    DropdownContainer("paletteDropdownContainer", [
+      PaletteOption("body", "행성"),
+      PaletteOption("band", "행성 띠")
+    ])
   );
   return paletteContainer;
 }
@@ -459,8 +595,8 @@ function TrashCan() {
         `--theme-band-color`,
         "rgba(0, 0, 0, 0)"
       );
-      fillSVGPath(`.palette-dropdown #body-palette #palette #stroke`, "#000 ");
-      fillSVGPath(`.palette-dropdown #band-palette #palette #stroke`, "#000 ");
+      fillSVGPath(`.dropdown #body-palette #palette #stroke`, "#000 ");
+      fillSVGPath(`.dropdown #band-palette #palette #stroke`, "#000 ");
     }
   });
   return trashCan;
@@ -470,6 +606,7 @@ function AvataToolsContainer(targetId) {
   function render() {
     const colorPalette = PaletteContainer();
     const trashCan = TrashCan();
+    const download = DownloadContainer();
     const avataToolsContainer = createElement(
       "div",
       {
@@ -477,6 +614,7 @@ function AvataToolsContainer(targetId) {
         class: "avata-tools-container"
       },
       colorPalette,
+      download,
       trashCan
     );
     target == null ? void 0 : target.append(avataToolsContainer);
@@ -485,7 +623,7 @@ function AvataToolsContainer(targetId) {
 }
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    const dropDown = getElement("#paletteDropdownContainer");
+    const dropDown = getElement("#dropdownContainer");
     dropDown == null ? void 0 : dropDown.classList.add("hidden");
   }
 });
