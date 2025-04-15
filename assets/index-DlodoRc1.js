@@ -169,7 +169,7 @@ function Canvas(targetId) {
     if (key === "배경") {
       const item2 = state["배경"];
       item2.svgName = svgName;
-      item2.element.style.backgroundImage = `url(/img/${svgName}.svg)`;
+      item2.element.style.backgroundImage = `url(./img/${svgName}.svg)`;
       return;
     }
     const item = state[key];
@@ -643,7 +643,7 @@ const logoBox = createElement(
   "div",
   { class: "logo-box" },
   createElement("img", {
-    src: "/img/logo-alpha.svg",
+    src: "./img/logo-alpha.svg",
     alt: "hangbata logo image"
   })
 );
